@@ -3,16 +3,13 @@ import 'package:flutter/material.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  static const String _title = "Counter";
-
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
       home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
+        appBar: AppBar(title: const Text("Counter")),
         body: Align(
           alignment: Alignment.center,
           child: CounterAndInstructionWidget(),
@@ -49,19 +46,7 @@ class CounterWidget extends StatefulWidget {
 }
 
 class _CounterWidgetState extends State<CounterWidget> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
+  int _counter = 50;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +63,11 @@ class _CounterWidgetState extends State<CounterWidget> {
             flex: 1,
             child: IconButton(
               visualDensity: VisualDensity.compact,
-              onPressed: _decrementCounter,
+              onPressed: () {
+                setState(() {
+                  _counter--;
+                });
+              },
               icon: const Icon(Icons.remove),
             ),
           ),
@@ -91,7 +80,11 @@ class _CounterWidgetState extends State<CounterWidget> {
           Expanded(
               flex: 1,
               child: IconButton(
-                onPressed: _incrementCounter,
+                onPressed: () {
+                  setState(() {
+                    _counter++;
+                  });
+                },
                 icon: const Icon(Icons.add),
               )),
         ],
