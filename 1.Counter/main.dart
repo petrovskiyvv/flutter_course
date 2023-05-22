@@ -24,17 +24,17 @@ class CounterAndInstructionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const <Widget>[
-        Text(
-          'Tap "-" to decrement',
-        ),
-        CounterWidget(),
-        Text(
-          'Tap "+" to increment',
-        ),
-      ],
-    ));
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const <Widget>[
+            Text(
+              'Tap "-" to decrement',
+            ),
+            CounterWidget(),
+            Text(
+              'Tap "+" to increment',
+            ),
+          ],
+        ));
   }
 }
 
@@ -58,27 +58,26 @@ class _CounterWidgetState extends State<CounterWidget> {
           color: Colors.purple,
           borderRadius: BorderRadius.all(Radius.circular(15))),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Expanded(
-            flex: 1,
             child: IconButton(
-              visualDensity: VisualDensity.compact,
               onPressed: () {
                 setState(() {
                   _counter--;
                 });
               },
-              icon: const Icon(Icons.remove),
+              icon: const Icon(Icons.remove,),
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
             ),
           ),
           Expanded(
-              flex: 1,
               child: Text(
                 "$_counter",
                 textAlign: TextAlign.center,
               )),
           Expanded(
-              flex: 1,
               child: IconButton(
                 onPressed: () {
                   setState(() {
@@ -86,6 +85,8 @@ class _CounterWidgetState extends State<CounterWidget> {
                   });
                 },
                 icon: const Icon(Icons.add),
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
               )),
         ],
       ),
